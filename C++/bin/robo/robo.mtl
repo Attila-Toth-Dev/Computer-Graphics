@@ -1,0 +1,14 @@
+#
+#
+#
+
+newmtl _Robo_MAT
+
+illum 2
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ns 20.000000
+map_Kd robo_diffuse.jpg  # Texture Map
+map_Ks robo_specular.jpg # Specular Map
+bump   robo_normal.jpg   # Normal Map

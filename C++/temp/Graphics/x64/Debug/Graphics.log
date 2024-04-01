@@ -1,0 +1,8 @@
+﻿  GraphicsApp.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(65,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\GraphicsApp.cpp(104,91): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\GraphicsApp.cpp(104,72): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Scene.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(65,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Graphics.vcxproj -> C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\temp\Graphics\x64\Debug\Graphics.exe
