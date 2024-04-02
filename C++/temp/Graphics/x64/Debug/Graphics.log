@@ -1,8 +1,30 @@
-﻿  GraphicsApp.cpp
-C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(65,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\GraphicsApp.cpp(104,91): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\GraphicsApp.cpp(104,72): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+﻿  BaseCamera.cpp
+  FlyCamera.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\FlyCamera.cpp(37,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\FlyCamera.cpp(38,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  GraphicsApp.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Instance.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  Mesh.cpp
+  OBJMesh.cpp
+  OrbitalCamera.cpp
+  ParticleEmitter.cpp
+  Planet.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Planet.cpp(24,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Planet.cpp(24,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Planet.cpp(35,60): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  RenderTarget.cpp
   Scene.cpp
-C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(65,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.cpp(25,21): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.cpp(26,21): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+  Shader.cpp
+  SimpleCamera.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\SimpleCamera.cpp(46,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\SimpleCamera.cpp(47,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  StationaryCamera.cpp
   Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Graphics.vcxproj -> C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\temp\Graphics\x64\Debug\Graphics.exe
