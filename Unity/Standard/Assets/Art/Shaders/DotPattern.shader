@@ -9,8 +9,8 @@ Shader "AIE/Unlit/DotPattern"
         _Colour ("Colour", Color) = (0.6, 0.6, 0.6, 1)
         _ShadowColour ("Shadow Colour", Color) = (0.1, 0.1, 0.1, 1)
 
-        _Step1 ("Step 1", Range(0, 1)) = 0.2;
-        _Step2 ("Step 2", Range(0, 1)) = 0.4;
+        _Step1 ("Step 1", Range(0, 1)) = 0.2
+        _Step2 ("Step 2", Range(0, 1)) = 0.4
         _Granularity ("Granularity", Range(20, 1000)) = 100
     }
     SubShader
@@ -66,20 +66,33 @@ Shader "AIE/Unlit/DotPattern"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
-                o.normal = unity_ObjectToWorldNormal(v.normal);
-                o.screenPos = (ComputeScreenPos(0.vertex));
+                o.normal = UnityObjectToWorldNormal(v.normal);
+                // This is how we can calculate the position in clip space
+                o.screenPos = (ComputeScreenPos(o.vertex));
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
+                // Diffuse the lighting, determine the normal dot product with the light direction
+                half nl = max(0, dot(i.normal, _WorldSpaceLightPos0.xyz));
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+
+                // Get the screen coordinate
+                float2 wcoord = (_Granularity * i.screenPos.xy / i.screenPos.w);
+
+                // Sample from the pattern texture to apply the screen space
+                fixed4 pattern = tex2D(_PatternTex, wcoord);
+
+                // Then we need to use the step values to apply the highlight, base and shadow colours and patterns
+                float highlight = step(_Step2, 0.5 * (pattern + nl));
+                float lighting = step(_Step1, 0.5 * (pattern + nl));
+
+                return col * ((_HighlightColour * highlight) + (_Colour * lighting) + (_ShadowColour * (1 - lighting) * (1 - highlight)));
             }
             ENDCG
         }
     }
+    FallBack "Diffuse"
 }
