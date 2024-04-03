@@ -45,7 +45,6 @@ Shader "AIE/Unlit/InverseOutline"
 
             fixed4 frag (v2f i) : SV_Target
             {
-
                 return _OutlineColour;
             }
             ENDCG
