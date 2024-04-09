@@ -2016,6 +2016,7 @@ GameObject:
   - component: {fileID: 6633186415437962096}
   - component: {fileID: 787535314022138122}
   - component: {fileID: 6288748332618613195}
+  - component: {fileID: 6834735648903185696}
   m_Layer: 0
   m_Name: Paladin
   m_TagString: Untagged
@@ -2077,16 +2078,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64d940677ed1254c8b7f35579e62ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  rotationSpeed: 500
-  movementReference: {fileID: -6319973561059891356, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+  walkSpeed: 2.5
+  sprintSpeed: 4
+  rotationSpeed: 100
+  movement: {x: 0, y: 0}
+  _isWalking: 0
+  _isSprinting: 0
+  _isCrouching: 0
+  _isSlashing: 0
+  _isBlocking: 0
+  movementActionRef: {fileID: -6319973561059891356, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}
-  jumpReference: {fileID: 7364260125586714190, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+  sprintActionRef: {fileID: -4001639598082024450, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}
-  sprintReference: {fileID: -4001639598082024450, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+  jumpActionRef: {fileID: 7364260125586714190, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}
-  meleeReference: {fileID: 3414830535740242337, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+  meleeActionRef: {fileID: 3414830535740242337, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}
+  blockActionRef: {fileID: -8308008940914882937, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+    type: 3}
+  crouchActionRef: {fileID: -1157994417811799555, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
+    type: 3}
+--- !u!143 &6834735648903185696
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288748332618613194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6456003388143599325
 GameObject:
   m_ObjectHideFlags: 0

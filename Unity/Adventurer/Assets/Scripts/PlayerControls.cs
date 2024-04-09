@@ -1,72 +1,74 @@
+using NaughtyAttributes;
 using System;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 2.5f;
-    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float walkSpeed = 2.5f;
+    [SerializeField] private float sprintSpeed = 4f;
+    [SerializeField] private float rotationSpeed = 10f;
 
-    [Header("Inputs")]
-    [SerializeField] private InputActionReference movementReference;
-    [SerializeField] private InputActionReference jumpReference;
-    [SerializeField] private InputActionReference sprintReference;
-    [SerializeField] private InputActionReference meleeReference;
+    private float moveSpeed;
 
-    private float sprintMultiplier;
-    private bool isSprinting;
+    [Header("Debugging")]
+    [SerializeField, ReadOnly] private Vector2 movement;
+    [SerializeField, ReadOnly] private bool _isWalking;
+    [SerializeField, ReadOnly] private bool _isSprinting;
+    [SerializeField, ReadOnly] private bool _isCrouching;
+    [SerializeField, ReadOnly] private bool _isSlashing;
+    [SerializeField, ReadOnly] private bool _isBlocking;
+
+    [Header("Input Actions")]
+    [SerializeField] private InputActionReference movementActionRef;
+    [SerializeField] private InputActionReference sprintActionRef;
+    [SerializeField] private InputActionReference jumpActionRef;
+    [SerializeField] private InputActionReference meleeActionRef;
+    [SerializeField] private InputActionReference blockActionRef;
+    [SerializeField] private InputActionReference crouchActionRef;
 
     private Animator animator;
-
-    private Vector2 movement;
+    private CharacterController controller;
 
     private void Awake()
     {
-        jumpReference.action.started += Jump;
-        meleeReference.action.started += Shoot;
+        //jumpActionRef.action.started += Jump;
+        //crouchActionRef.action.started += Crouch;
+
+        meleeActionRef.action.started += Melee;
+        //blockActionRef.action.started += Block;
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
+
+        moveSpeed = walkSpeed;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        GetInputs();
+
         Movement();
     }
-
-    private void Animations()
+    private void GetInputs()
     {
-        animator.SetFloat("Forward", Mathf.Abs(GetInputs().y));
-        animator.SetFloat("Sense", Mathf.Sign(GetInputs().x));
-
-        animator.SetFloat("Turn", GetInputs().x);
-    }
-
-    private Vector2 GetInputs()
-    {
-        isSprinting = sprintReference.action.IsPressed();
-
-        movement = movementReference.action.ReadValue<Vector2>();
-        return movement;
+        movement = movementActionRef.action.ReadValue<Vector2>();
+        _isSprinting = sprintActionRef.action.IsInProgress();
     }
 
     private void Movement()
     {
-        sprintMultiplier = isSprinting ? 2f : 1f;
+        controller.Move(transform.forward * movement.y * (moveSpeed = _isSprinting ? sprintSpeed : walkSpeed) * Time.deltaTime);
+        transform.Rotate(transform.up, movement.x * rotationSpeed * Time.deltaTime);
 
-        Vector3 moveDir = new Vector3(GetInputs().x, 0, GetInputs().y);
+        animator.SetFloat("Forward", Mathf.Lerp(-movement.y, movement.y, Time.deltaTime));
+        animator.SetFloat("Sense", Mathf.Sign(movement.y));
 
-        transform.Translate(moveDir * moveSpeed * sprintMultiplier * Time.deltaTime);
-
-        transform.Rotate(transform.up, GetInputs().x * rotationSpeed * Time.deltaTime);
-        Animations();
-
-        Debug.Log(isSprinting ? "Sprinting" : "Not Sprinting");
-        Debug.Log(sprintMultiplier);
+        animator.SetFloat("Turn", movement.x);
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -74,26 +76,30 @@ public class PlayerControls : MonoBehaviour
         
     }
 
-    private void Shoot(InputAction.CallbackContext context)
+    private void Melee(InputAction.CallbackContext context)
     {
         animator.SetTrigger("Slash");
     }
 
     private void OnEnable()
     {
-        movementReference.action.Enable();
+        movementActionRef.action.Enable();
+        crouchActionRef.action.Enable();
+        sprintActionRef.action.Enable();
+        jumpActionRef.action.Enable();
 
-        jumpReference.action.Enable();
-        sprintReference.action.Enable();
-        meleeReference.action.Enable();
+        meleeActionRef.action.Enable();
+        blockActionRef.action.Enable();
     }
 
     private void OnDisable()
     {
-        movementReference.action.Disable();
+        movementActionRef.action.Disable();
+        crouchActionRef.action.Disable();
+        sprintActionRef.action.Disable();
+        jumpActionRef.action.Disable();
 
-        jumpReference.action.Disable();
-        sprintReference.action.Disable();
-        meleeReference.action.Disable();
+        meleeActionRef.action.Disable();
+        blockActionRef.action.Disable();
     }
 }
