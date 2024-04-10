@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c346a9e2503cda64ba4698db6aa5e707
+guid: 50e0d5f0490eb5a45b0b5952db236f7d
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -7,8 +7,8 @@ ModelImporter:
       74: 416870459326255563
     second: tpose
   - first:
-      74: -6206981513316247533
-    second: Idle
+      74: -8808072206245539448
+    second: RollRight
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -24,7 +24,14 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'human_male_roll_right_01' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Knee_R' has translation animation
+      that will be discarded.\n\t'Ankle_R' has translation animation that will be
+      discarded.\n\t'Toes_R' has translation animation that will be discarded.\n\t'Knee_L'
+      has translation animation that will be discarded.\n\t'Ankle_L' has translation
+      animation that will be discarded.\n\t'Toes_L' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -67,22 +74,22 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
-      takeName: human_male_idle_01
+      name: RollRight
+      takeName: human_male_roll_right_01
       internalID: 0
       firstFrame: 2
-      lastFrame: 54
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 1
@@ -578,13 +585,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Idle(Clone)
+    - name: RollRight(Clone)
       parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: Idle(Clone)
+      parentName: RollRight(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -816,7 +823,7 @@ ModelImporter:
     - name: jointItemR
       parentName: Wrist_R
       position: {x: -0.116775185, y: -0.003538352, z: -0.036435187}
-      rotation: {x: -0.13844743, y: 0.98996454, z: 0.028244814, w: -0.0021931236}
+      rotation: {x: -0.13844745, y: 0.98996454, z: 0.028244827, w: -0.0021931408}
       scale: {x: 1, y: 1, z: 1}
     - name: jnt_shoulder_R
       parentName: Scapula_R
@@ -951,7 +958,7 @@ ModelImporter:
     - name: jointItemL
       parentName: Wrist_L
       position: {x: 0.116775215, y: 0.003538363, z: 0.036435228}
-      rotation: {x: 0.9887743, y: 0.13961887, z: -0.04857945, w: -0.02172627}
+      rotation: {x: 0.9887743, y: 0.13961887, z: -0.04857945, w: -0.021726284}
       scale: {x: 1, y: 1, z: 1}
     - name: jnt_shoulder_L
       parentName: Scapula_L

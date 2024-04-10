@@ -1,24 +1,28 @@
 using NaughtyAttributes;
-using System;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float walkSpeed = 2.5f;
-    [SerializeField] private float sprintSpeed = 4f;
-    [SerializeField] private float rotationSpeed = 10f;
-
-    private float moveSpeed;
+    [SerializeField] private Rigidbody rigidBody;
+    
+    [SerializeField] private float walkSpeed = 4f;
+    [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float jumpForce = 100f;
+    [SerializeField] private float jumpCooldown = 5f;
+    [SerializeField, ReadOnly] private bool readyToJump;
 
     [Header("Debugging")]
     [SerializeField, ReadOnly] private Vector2 movement;
-    [SerializeField, ReadOnly] private bool _isWalking;
-    [SerializeField, ReadOnly] private bool _isSprinting;
-    [SerializeField, ReadOnly] private bool _isCrouching;
-    [SerializeField, ReadOnly] private bool _isSlashing;
-    [SerializeField, ReadOnly] private bool _isBlocking;
+    [SerializeField, ReadOnly] private bool isGrounded;
+    [SerializeField, ReadOnly] private bool isSprinting;
+    [SerializeField, ReadOnly] private bool isCrouching;
+    [SerializeField, ReadOnly] private bool isSlashing;
+    [SerializeField, ReadOnly] private bool isBlocking;
+    [SerializeField] private float maxGroundDistance = 0.5f;
 
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movementActionRef;
@@ -28,12 +32,18 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference blockActionRef;
     [SerializeField] private InputActionReference crouchActionRef;
 
+    private float moveSpeed;
+    
     private Animator animator;
-    private CharacterController controller;
+    
+    private static readonly int forward = Animator.StringToHash("Forward");
+    private static readonly int sense = Animator.StringToHash("Sense");
+    private static readonly int turn = Animator.StringToHash("Turn");
+    private static readonly int slash = Animator.StringToHash("Slash");
 
     private void Awake()
     {
-        //jumpActionRef.action.started += Jump;
+        jumpActionRef.action.started += Jump;
         //crouchActionRef.action.started += Crouch;
 
         meleeActionRef.action.started += Melee;
@@ -43,43 +53,71 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();
 
         moveSpeed = walkSpeed;
+
+        readyToJump = true;
     }
 
     private void Update()
     {
         GetInputs();
-
+        GroundChecking();
+        
         Movement();
     }
+
+    private void GroundChecking()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, maxGroundDistance);
+    }
+
     private void GetInputs()
     {
         movement = movementActionRef.action.ReadValue<Vector2>();
-        _isSprinting = sprintActionRef.action.IsInProgress();
+        
+        isSprinting = sprintActionRef.action.IsInProgress();
     }
 
     private void Movement()
     {
-        controller.Move(transform.forward * movement.y * (moveSpeed = _isSprinting ? sprintSpeed : walkSpeed) * Time.deltaTime);
-        transform.Rotate(transform.up, movement.x * rotationSpeed * Time.deltaTime);
+        moveSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
-        animator.SetFloat("Forward", Mathf.Lerp(-movement.y, movement.y, Time.deltaTime));
-        animator.SetFloat("Sense", Mathf.Sign(movement.y));
-
-        animator.SetFloat("Turn", movement.x);
+        rigidBody.AddForce(transform.forward * (Time.deltaTime * moveSpeed * movement.y), ForceMode.Acceleration);
+        transform.Rotate(Vector3.up * (Time.deltaTime * rotationSpeed * movement.x));
+        
+        Animations();
     }
 
+    private void Animations()
+    {
+        animator.SetBool("Falling", isGrounded);
+        
+        animator.SetFloat(forward, Mathf.Lerp(0, movement.y * moveSpeed, 10f));
+        animator.SetFloat(sense, Mathf.Sign(movement.y));
+        
+        animator.SetFloat(turn, movement.x);
+    }
+    
     private void Jump(InputAction.CallbackContext context)
     {
-        
+        if(isGrounded)
+        {
+            readyToJump = false;
+
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
 
     private void Melee(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("Slash");
+        animator.SetTrigger(slash);
     }
+    
+    private void ResetJump() => readyToJump = true;
 
     private void OnEnable()
     {
@@ -101,5 +139,12 @@ public class PlayerControls : MonoBehaviour
 
         meleeActionRef.action.Disable();
         blockActionRef.action.Disable();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 endPos = new (transform.position.x, transform.position.y - maxGroundDistance, transform.position.z);
+        Gizmos.DrawLine(transform.position, endPos);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c346a9e2503cda64ba4698db6aa5e707
+guid: ab54d1b34370dbe4d896efebb96535ef
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -7,8 +7,17 @@ ModelImporter:
       74: 416870459326255563
     second: tpose
   - first:
-      74: -6206981513316247533
-    second: Idle
+      74: -4936251570423720521
+    second: Jump_Up
+  - first:
+      74: 6217831777563468985
+    second: human_male_jumpdown
+  - first:
+      74: 7275300753899294233
+    second: Jump
+  - first:
+      74: 1040030770821179939
+    second: Jump_Down
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -24,7 +33,22 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'human_male_jumpup' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Elbow_R' has translation animation that
+      will be discarded.\n\t'Wrist_R' has translation animation that will be discarded.\n\t'Elbow_L'
+      has translation animation that will be discarded.\n\t'Wrist_L' has translation
+      animation that will be discarded.\n\nClip 'human_male_jumpdown' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Elbow_R' has translation
+      animation that will be discarded.\n\t'Wrist_R' has translation animation that
+      will be discarded.\n\t'Elbow_L' has translation animation that will be discarded.\n\t'Wrist_L'
+      has translation animation that will be discarded.\n\nClip 'human_male_jump_all'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Elbow_R'
+      has translation animation that will be discarded.\n\t'Wrist_R' has translation
+      animation that will be discarded.\n\t'Elbow_L' has translation animation that
+      will be discarded.\n\t'Wrist_L' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -67,19 +91,77 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
-      takeName: human_male_idle_01
+      name: Jump_Up
+      takeName: human_male_jumpup
       internalID: 0
       firstFrame: 2
-      lastFrame: 54
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_Down
+      takeName: human_male_jumpdown
+      internalID: 0
+      firstFrame: 18
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump
+      takeName: human_male_jump_all
+      internalID: 0
+      firstFrame: 2
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
@@ -578,13 +660,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Idle(Clone)
+    - name: Jumps(Clone)
       parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: Idle(Clone)
+      parentName: Jumps(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
