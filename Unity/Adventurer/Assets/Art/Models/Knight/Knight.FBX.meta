@@ -1,20 +1,215 @@
 fileFormatVersion: 2
-guid: 6fa23c567370b4741948433ffaceaf80
+guid: 445581dbfbbea06408d552fa1aca77fc
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Meshtint Free Knight
+  - first:
+      1: 100004
+    second: Rig
+  - first:
+      1: 100006
+    second: RigHead
+  - first:
+      1: 100008
+    second: RigHeadBone001
+  - first:
+      1: 100010
+    second: RigLCalf
+  - first:
+      1: 100012
+    second: RigLCollarbone
+  - first:
+      1: 100014
+    second: RigLFoot
+  - first:
+      1: 100016
+    second: RigLForearm
+  - first:
+      1: 100018
+    second: RigLPalm
+  - first:
+      1: 100020
+    second: RigLPlatform
+  - first:
+      1: 100022
+    second: RigLThigh
+  - first:
+      1: 100024
+    second: RigLToe11
+  - first:
+      1: 100026
+    second: RigLToe12
+  - first:
+      1: 100028
+    second: RigLUpperarm
+  - first:
+      1: 100030
+    second: RigNeck
+  - first:
+      1: 100032
+    second: RigPelvis
+  - first:
+      1: 100034
+    second: RigRCalf
+  - first:
+      1: 100036
+    second: RigRCollarbone
+  - first:
+      1: 100038
+    second: RigRFoot
+  - first:
+      1: 100040
+    second: RigRForearm
+  - first:
+      1: 100042
+    second: RigRibcage
+  - first:
+      1: 100044
+    second: RigRPalm
+  - first:
+      1: 100046
+    second: RigRPlatform
+  - first:
+      1: 100048
+    second: RigRThigh
+  - first:
+      1: 100050
+    second: RigRToe11
+  - first:
+      1: 100052
+    second: RigRToe12
+  - first:
+      1: 100054
+    second: RigRUpperarm
+  - first:
+      1: 100056
+    second: RigSpine1
+  - first:
+      1: 100058
+    second: RigSpine2
+  - first:
+      1: 100060
+    second: RigSpine3
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Meshtint Free Knight
+  - first:
+      4: 400004
+    second: Rig
+  - first:
+      4: 400006
+    second: RigHead
+  - first:
+      4: 400008
+    second: RigHeadBone001
+  - first:
+      4: 400010
+    second: RigLCalf
+  - first:
+      4: 400012
+    second: RigLCollarbone
+  - first:
+      4: 400014
+    second: RigLFoot
+  - first:
+      4: 400016
+    second: RigLForearm
+  - first:
+      4: 400018
+    second: RigLPalm
+  - first:
+      4: 400020
+    second: RigLPlatform
+  - first:
+      4: 400022
+    second: RigLThigh
+  - first:
+      4: 400024
+    second: RigLToe11
+  - first:
+      4: 400026
+    second: RigLToe12
+  - first:
+      4: 400028
+    second: RigLUpperarm
+  - first:
+      4: 400030
+    second: RigNeck
+  - first:
+      4: 400032
+    second: RigPelvis
+  - first:
+      4: 400034
+    second: RigRCalf
+  - first:
+      4: 400036
+    second: RigRCollarbone
+  - first:
+      4: 400038
+    second: RigRFoot
+  - first:
+      4: 400040
+    second: RigRForearm
+  - first:
+      4: 400042
+    second: RigRibcage
+  - first:
+      4: 400044
+    second: RigRPalm
+  - first:
+      4: 400046
+    second: RigRPlatform
+  - first:
+      4: 400048
+    second: RigRThigh
+  - first:
+      4: 400050
+    second: RigRToe11
+  - first:
+      4: 400052
+    second: RigRToe12
+  - first:
+      4: 400054
+    second: RigRUpperarm
+  - first:
+      4: 400056
+    second: RigSpine1
+  - first:
+      4: 400058
+    second: RigSpine2
+  - first:
+      4: 400060
+    second: RigSpine3
+  - first:
+      43: 4300000
+    second: Meshtint Free Knight
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Meshtint Free Knight
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -31,37 +226,8 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: falling
-      takeName: mixamo.com
-      internalID: -203655887218126122
-      firstFrame: 0
-      lastFrame: 60
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    isReadable: 0
+    clipAnimations: []
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -73,8 +239,8 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 1
-    fileIdsGeneration: 2
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -85,13 +251,13 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 0
+    optimizeBones: 1
     meshOptimizationFlags: -1
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
+    secondaryUVMarginMethod: 0
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
@@ -101,7 +267,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
@@ -445,14 +611,13 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 445581dbfbbea06408d552fa1aca77fc,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
