@@ -37,24 +37,27 @@ void Instance::Draw(Scene* _scene)
 	if (m_simpleMesh == nullptr && !m_isUntextured)
 	{
 		// This is for a OBJMesh
-		// OBJDraw(Scene* _scene);
+		OBJDraw(_scene);
 		return;			
 	}
 	if (m_simpleMesh == nullptr && m_isUntextured)
 	{
 		// This is for an untextured OBJMesh
-		// OBJDrawUntextured(Scene* _scene);
+		// OBJDrawUntextured(_scene);
 		return;
 	}
 	if (m_mesh == nullptr)
 	{
 		// This is for simple Mesh.
-		// MeshDraw(Scene* _scene)
+		// MeshDraw(_scene)
 		return;
-	}
+	}	
+}
 
+void Instance::OBJDraw(Scene* _scene)
+{
 	m_shader->bind();
-	
+
 	auto pv = _scene->GetCamera()->GetProjectionMatrix(
 		_scene->GetWindowSize().x, _scene->GetWindowSize().y) *
 		_scene->GetCamera()->GetViewMatrix();
@@ -74,12 +77,22 @@ void Instance::Draw(Scene* _scene)
 
 	int numberOfLights = _scene->GetNumberOfLights();
 	m_shader->bindUniform("NumberOfLights", numberOfLights);
-	m_shader->bindUniform("PointLightPositions", numberOfLights, 
+	m_shader->bindUniform("PointLightPositions", numberOfLights,
 		_scene->GetPointLightPositions());
 	m_shader->bindUniform("PointLightColours", numberOfLights,
 		_scene->GetPointLightColours());
 
 	m_mesh->draw();
+}
+
+void Instance::OBJDrawUntextured(Scene* _scene)
+{
+
+}
+
+void Instance::MeshDraw(Scene* _scene)
+{
+
 }
 
 glm::mat4 Instance::MakeTransform(glm::vec3 _position, glm::vec3 _eulerAngles, glm::vec3 _scale)

@@ -28,6 +28,10 @@ public:
 
 	void Draw(Scene* _scene);
 
+	void OBJDraw(Scene* _scene);
+	void OBJDrawUntextured(Scene* _scene);
+	void MeshDraw(Scene* _scene);
+
 	static glm::mat4 MakeTransform(glm::vec3 _position, glm::vec3 _eulerAngles, glm::vec3 _scale);
 
 	glm::mat4 GetTransform() { return m_transform; }
