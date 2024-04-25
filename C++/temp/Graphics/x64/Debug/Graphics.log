@@ -10,7 +10,5 @@ C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,53): 
 C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,53): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Scene.cpp')
   
-C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.cpp(25,21): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.cpp(26,21): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
   Generating Code...
-  Graphics.vcxproj -> C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\temp\Graphics\x64\Debug\Graphics.exe
+C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.cpp(1,1): error C1090: PDB API call failed, error code '3': C:\Users\User\Desktop\GitHub\AIE-Computer-Graphics\C++\temp\Graphics\x64\Debug\vc143.pdb

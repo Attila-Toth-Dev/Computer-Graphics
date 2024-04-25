@@ -21,9 +21,6 @@ Scene::~Scene()
 {
 	for (auto it = m_instances.begin(); it != m_instances.end(); it++)
 		delete* it;
-
-	m_consoleLogs.empty();
-	m_pointLights.empty();
 }
 
 void Scene::Update(float _dt)
@@ -125,7 +122,6 @@ void Scene::ImGui_Functions()
 		std::string positionString = std::string("Position ") += id;
 		std::string colourString = std::string("Colour ") += id;
 		std::string intensityString = std::string("Intensity ") += id;
-
 
 		ImGui::Text(pointLightName.c_str());
 
