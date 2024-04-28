@@ -24,36 +24,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "81611ccc-4351-4f94-aba8-2453ce399a20",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Melee",
                     "type": "Button",
                     "id": "23a4476b-5315-4f36-8388-a79db6e74ea0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Block",
-                    "type": "Button",
-                    "id": "f9e7ac5f-3bbb-437c-8045-c048ba3c0cc4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "16cc821f-af32-400b-a296-b3296740a9f0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -129,45 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5387bf27-4fd7-4ff6-9629-43302ebf2a7e",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "92fdd579-5d44-442e-ac2c-63621eb45c34",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "099944e8-3c89-42bb-a107-0f88bd2b1b14",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Block",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "65bcdfae-06bd-4243-abe4-92c8deebb884",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private InputActionReference sprintActionRef;
     [SerializeField] private InputActionReference meleeActionRef;
 
+    private bool isAttacking;
+    
     private float moveSpeed;
     private float rotAngle;
     
@@ -26,7 +28,6 @@ public class PlayerControls : MonoBehaviour
     private new Rigidbody rigidbody;
     private Animator animator;
     
-    private static readonly int stabbing = Animator.StringToHash("Stabbing");
     private static readonly int vertical = Animator.StringToHash("Vertical");
 
     private void Awake()
@@ -76,7 +77,8 @@ public class PlayerControls : MonoBehaviour
     
     private void Melee(InputAction.CallbackContext obj)
     {
-        animator.SetTrigger(stabbing);
+        animator.SetTrigger("Stab");
+        Debug.Log("Stabbing");
     }
 
     private void OnEnable()
