@@ -12,22 +12,12 @@
 
 Instance::Instance(glm::mat4 _transform, aie::OBJMesh* _mesh, 
 	aie::ShaderProgram* _shader, bool _isUntextured) : 
-	m_transform(_transform), m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured), m_simpleMesh(nullptr)
+	m_transform(_transform), m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured)
 {
-}
-
-Instance::Instance(glm::vec3 _position, glm::vec3 _eulerAngles, glm::vec3 _scale, 
-	aie::OBJMesh* _mesh, aie::ShaderProgram* _shader, bool _isUntextured) :
-		m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured)
-{
-	m_transform = MakeTransform(_position, _eulerAngles, _scale);
 }
 
 void Instance::Draw(Scene* _scene)
 {
-	if (m_simpleMesh == nullptr && m_mesh == nullptr)
-		return;
-
 	if (m_mesh != nullptr && !m_isUntextured)
 	{
 		// This is for a OBJMesh

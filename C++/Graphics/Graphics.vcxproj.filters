@@ -19,12 +19,6 @@
     <Filter Include="Source Files\Provided">
       <UniqueIdentifier>{e5a4275a-8874-4ebf-baac-cff26fa49aec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Camera">
-      <UniqueIdentifier>{c9787ba5-bf46-42d8-b2cb-486c3e0a74e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Camera">
-      <UniqueIdentifier>{d9673f13-dff1-44af-8c29-1f9ac7ce02cf}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,9 +36,6 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Provided</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleCamera.cpp">
-      <Filter>Source Files\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,7 +45,7 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleEmitter.cpp">
+    <ClCompile Include="SimpleCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,9 +65,6 @@
     <ClInclude Include="tiny_obj_loader.h">
       <Filter>Header Files\Provided</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleCamera.h">
-      <Filter>Header Files\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -86,7 +74,7 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleEmitter.h">
+    <ClInclude Include="SimpleCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

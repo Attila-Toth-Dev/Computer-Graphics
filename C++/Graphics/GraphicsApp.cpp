@@ -151,12 +151,10 @@ bool GraphicsApp::LaunchShaders()
 	// Spear Loader
 	ObjLoader(m_spearMesh, m_spearTransform, "./soulspear/soulspear.obj", "Soulspear", true, 2);
 	
-	// Bunny Loader
-	ObjLoader(m_bunnyMesh, m_bunnyTransform, "./stanford/bunny.obj", "Stanford", false, 0.2f);
-	
 	// Dragon Loader
 	ObjLoader(m_dragonMesh, m_dragonTransform, "./stanford/dragon.obj", "Stanford", false, 0.2f, {1.f, 0, 1.f});
 	
+	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
 	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
 
 	return true;

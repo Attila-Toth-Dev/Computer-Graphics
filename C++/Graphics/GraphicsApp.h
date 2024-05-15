@@ -11,7 +11,6 @@
 #include "OBJMesh.h"
 #include "Texture.h"
 #include "RenderTarget.h"
-#include "ParticleEmitter.h"
 
 #include "SimpleCamera.h"
 
@@ -45,7 +44,6 @@ protected:
 
 	SimpleCamera m_simpleCamera;
 
-	ParticleEmitter* m_emitter;
 	aie::ShaderProgram m_particleShader;
 	glm::mat4 m_particleTransform;
 	
@@ -70,10 +68,6 @@ protected:
 	Mesh m_quadMesh;
 	Mesh m_screenQuad;
 	glm::mat4 m_quadTransform;
-
-	// Bunny Mesh
-	aie::OBJMesh m_bunnyMesh;
-	glm::mat4 m_bunnyTransform;
 
 	// Dragon Mesh
 	aie::OBJMesh m_dragonMesh;
