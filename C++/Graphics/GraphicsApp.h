@@ -14,7 +14,6 @@
 #include "ParticleEmitter.h"
 
 #include "SimpleCamera.h"
-#include "FlyCamera.h"
 
 class BaseCamera;
 class Scene;

@@ -12,7 +12,7 @@
 
 Instance::Instance(glm::mat4 _transform, aie::OBJMesh* _mesh, 
 	aie::ShaderProgram* _shader, bool _isUntextured) : 
-	m_transform(_transform), m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured)
+	m_transform(_transform), m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured), m_simpleMesh(nullptr)
 {
 }
 
@@ -28,7 +28,7 @@ void Instance::Draw(Scene* _scene)
 	if (m_simpleMesh == nullptr && m_mesh == nullptr)
 		return;
 
-	if (m_simpleMesh == nullptr && !m_isUntextured)
+	if (m_mesh != nullptr && !m_isUntextured)
 	{
 		// This is for a OBJMesh
 		OBJDraw(_scene);

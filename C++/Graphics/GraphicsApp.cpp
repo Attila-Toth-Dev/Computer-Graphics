@@ -8,7 +8,6 @@
 
 #include "Scene.h"
 #include "Instance.h"
-#include "ParticleEmitter.h"
 
 using glm::vec3;
 using glm::vec4;
@@ -27,25 +26,18 @@ bool GraphicsApp::startup()
 {
 	setBackgroundColour(0.25f, 0.25f, 0.25f);
 
-	// initialise gizmo primitive counts
 	Gizmos::create(10000, 10000, 10000, 10000);
 
-	// create simple camera transforms
 	m_viewMatrix = glm::lookAt(vec3(10), vec3(0), vec3(0, 1, 0));
 	m_projectionMatrix = glm::perspective(glm::pi<float>() * 0.25f, 16.0f / 9.0f, 0.1f, 1000.0f);
 
-	#pragma region Scene Setup
-	// Ambient Light
 	Light light;
 	light.direction = { 1, -1, 1 };
 	light.colour = { 1, 1, 1 };
 
-	// This will create one scene to use
 	m_scene = new Scene(&m_simpleCamera, glm::vec2(getWindowWidth(), getWindowHeight()), light);
 	
 	m_scene->GetPointLights().push_back(Light(glm::vec3(5, 3, 0), glm::vec3(1, 0, 0), 10));
-	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
-	#pragma endregion
 
 	return LaunchShaders();
 }
@@ -62,10 +54,8 @@ void GraphicsApp::update(float deltaTime)
 	if (m_scene->GetWindowSize().x != (float)getWindowWidth())
 		m_scene->SetWindowSize(glm::vec2((float)getWindowWidth(), (float)getWindowHeight()));
 
-	// wipe the gizmos clean for this frame
 	Gizmos::clear();
 
-	// draw a simple grid with gizmos
 	vec4 white(1);
 	vec4 black(0, 0, 0, 1);
 	for (int i = 0; i < 21; ++i) {
@@ -77,45 +67,35 @@ void GraphicsApp::update(float deltaTime)
 						i == 10 ? white : black);
 	}
 
-	// add a transform so that we can see the axis
 	Gizmos::addTransform(mat4(1));
 	
 	m_simpleCamera.Update(deltaTime);
 
-	// Returns time since initialisation in seconds
 	float time = getTime();
 	
-	// quit if we press escape
 	aie::Input* input = aie::Input::getInstance();
 
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
-
-	//m_emitter->Update(deltaTime, m_simpleCamera.GetTransform());
 
 	m_scene->Update(deltaTime);
 }
 
 void GraphicsApp::draw() 
 {
-	// Bind to the render target
 	m_renderTarget.bind();
 
-	// wipe the screen to the background colour
 	clearScreen();
 
 	m_scene->Draw();
-	// update perspective based on screen size
+	
 	m_projectionMatrix = m_simpleCamera.GetProjectionMatrix(m_scene->GetWindowSize().x, m_scene->GetWindowSize().y);
 	m_viewMatrix = m_simpleCamera.GetViewMatrix();
-
 	auto pv = m_projectionMatrix * m_viewMatrix;
 	Gizmos::draw(pv);
 
-	// Unbind the target from the backbuffer
 	m_renderTarget.unbind();
 
-	// Clear the back buffer
 	clearScreen();
 
 	m_postProcess.bind();
@@ -177,6 +157,8 @@ bool GraphicsApp::LaunchShaders()
 	// Dragon Loader
 	ObjLoader(m_dragonMesh, m_dragonTransform, "./stanford/dragon.obj", "Stanford", false, 0.2f, {1.f, 0, 1.f});
 	
+	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
+
 	return true;
 }
 

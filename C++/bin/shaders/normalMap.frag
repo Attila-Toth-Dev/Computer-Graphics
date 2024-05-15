@@ -9,6 +9,7 @@ in vec2 vTexCoord;
 in vec3 vTangent;
 in vec3 vBiTangent;
 
+
 uniform sampler2D diffuseTexture;
 uniform sampler2D specularTexture;
 uniform sampler2D normalTexture;
@@ -83,7 +84,7 @@ void main()
         direction = direction / lightDistance;
     
         // Use the inverse square law to set the intensity of the lights
-        vec3 color = PointLightColours[i] / (lightDistance * 2);
+        vec3 color = PointLightColours[i] / (lightDistance * lightDistance);
 
         diffuseTotal += Diffuse(direction, color, N);
         specularTotal += Specular(direction, color, N, V);

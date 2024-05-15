@@ -36,7 +36,7 @@ void Scene::Draw()
 	for (int i = 0; i < MAX_LIGHTS && i < GetNumberOfLights(); i++)
 	{
 		m_pointLightPositions[i] = m_pointLights[i].direction;
-		m_pointLightColours[i] = m_pointLights[i].colour;
+		m_pointLightColours[i] = m_pointLights[i].GetColour();
 	}
 
 	for (auto it = m_instances.begin(); it != m_instances.end(); it++)
@@ -81,17 +81,6 @@ void Scene::ImGui_Functions()
 	#pragma region Lighting Settings
 
 	ImGui::Begin("Lighting Settings");
-
-	ImGui::Text("Global Lighting");
-	glm::vec3 lightDirection = GetGlobalLight().direction;
-	if (ImGui::DragFloat3("Global Direction", &lightDirection[0], 0.05f, -1.f, 1.f))
-		GetGlobalLight().SetDirection(lightDirection);
-
-	glm::vec3 colour = GetGlobalLight().colour;
-	if (ImGui::ColorEdit3("Global Colour", &colour[0]))
-		GetGlobalLight().SetColour(colour);
-
-	ImGui::Spacing();
 
 	ImGui::Text("Lights");
 	if (ImGui::Button("Add Light"))
@@ -149,8 +138,6 @@ void Scene::ImGui_Functions()
 #pragma endregion
 
 	// -- Instance Settings --
-	#pragma region Instance Settings
-	
 	ImGui::Begin("Hierarchy");
 	for (int i = 0; i < MAX_INSTANCE_COUNT && i < m_instances.size(); i++)
 	{
@@ -184,8 +171,6 @@ void Scene::ImGui_Functions()
 		}
 	}
 	ImGui::End();
-
-#pragma endregion
 
 	ImGui_DebugFunctions();
 }

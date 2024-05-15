@@ -1,3 +1,8 @@
-﻿  Scene.cpp
+﻿  GraphicsApp.cpp
 C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Instance.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Scene.cpp
+C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\Graphics\Scene.h(74,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   Graphics.vcxproj -> C:\Users\s220306\Desktop\GitHub\AIE-Computer-Graphics\C++\temp\Graphics\x64\Debug\Graphics.exe
