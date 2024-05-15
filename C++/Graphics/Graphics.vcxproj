@@ -173,7 +173,6 @@
     <ClCompile Include="OBJMesh.cpp" />
     <ClCompile Include="OrbitalCamera.cpp" />
     <ClCompile Include="ParticleEmitter.cpp" />
-    <ClCompile Include="Planet.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -189,7 +188,6 @@
     <ClInclude Include="OBJMesh.h" />
     <ClInclude Include="OrbitalCamera.h" />
     <ClInclude Include="ParticleEmitter.h" />
-    <ClInclude Include="Planet.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />

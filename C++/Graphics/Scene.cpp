@@ -152,25 +152,6 @@ void Scene::ImGui_Functions()
 	#pragma region Instance Settings
 	
 	ImGui::Begin("Hierarchy");
-
-	if (ImGui::Button("Add"))
-	{
-		m_consoleLogs["ADDED INSTANCE"] = glm::vec4(0, 1, 0, 1);
-	}
-
-	ImGui::SameLine();
-	
-	if (ImGui::Button("Remove"))
-	{
-		if (!m_instances.empty())
-		{
-			m_instances.pop_back();
-			m_consoleLogs["REMOVED INSTANCE"] = glm::vec4(0, 1, 0, 1);
-		}
-		else
-			m_consoleLogs["ERROR REMOVING INSTANCE, LIST IS EMPTY"] = glm::vec4(1, 0, 0, 1);
-	}
-
 	for (int i = 0; i < MAX_INSTANCE_COUNT && i < m_instances.size(); i++)
 	{
 		ImGui::Spacing();
@@ -202,7 +183,6 @@ void Scene::ImGui_Functions()
 			ins->SetTransform(newTransform);
 		}
 	}
-
 	ImGui::End();
 
 #pragma endregion

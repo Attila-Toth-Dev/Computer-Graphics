@@ -30,8 +30,6 @@ public:
 	void Update(float _deltaTime, const glm::mat4& _cameraTransform);
 	void Draw();
 
-	// more to come here!
-
 protected:
 	Particle*			m_particles;
 	unsigned int		m_firstDead;
@@ -56,8 +54,6 @@ protected:
 
 	glm::vec4			m_startColour;
 	glm::vec4			m_endColour;
-
-	// more to come here!
 
 };
 

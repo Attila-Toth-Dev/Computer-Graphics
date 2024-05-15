@@ -21,7 +21,6 @@ public:
 
 	void Draw();
 
-
 private:
 	unsigned int m_triCount;
 	unsigned int m_vao; // The vertex object array

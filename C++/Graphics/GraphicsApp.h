@@ -36,12 +36,6 @@ protected:
 
 	bool ObjLoader(aie::OBJMesh& _objMesh, glm::mat4& _transform, const char* _filePath, std::string _fileName = " ", bool _flipTexture = false, float scale = 1.f, glm::vec3 _position = { 0, 0, 0 });
 
-	// Mesh Creation
-	/*void CreateQuad();
-	void CreateBox(glm::vec3 _position, float _scale);
-	void CreateCyclinder(float _radius, int _segments = 8);
-	void CreateCircle(glm::vec2 _centre, float _radius, int _segments);*/
-
 protected:
 	// camera transforms
 	glm::mat4	m_viewMatrix;
@@ -56,7 +50,6 @@ protected:
 	aie::ShaderProgram m_particleShader;
 	glm::mat4 m_particleTransform;
 	
-	#pragma region Shaders & Textures
 	// Shaders
 	aie::ShaderProgram m_simpleShader;
 	aie::ShaderProgram m_simpleTexture;
@@ -71,9 +64,6 @@ protected:
 
 	glm::vec3 m_ambientLight;
 
-	#pragma endregion
-
-	#pragma region Mesh Objects
 	// Texture
 	aie::Texture m_gridTexture;
 
@@ -93,10 +83,5 @@ protected:
 	// Spear Mesh
 	aie::OBJMesh m_spearMesh;
 	glm::mat4 m_spearTransform;
-
-	// Lego Technic Mesh
-	aie::OBJMesh m_roboMesh;
-	glm::mat4 m_roboTransform;
-	#pragma endregion
 
 };

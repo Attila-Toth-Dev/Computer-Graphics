@@ -19,12 +19,6 @@
     <Filter Include="Source Files\Provided">
       <UniqueIdentifier>{e5a4275a-8874-4ebf-baac-cff26fa49aec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Exercises">
-      <UniqueIdentifier>{bdee1ee2-3669-4e8c-988c-d8caa9e2aebb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Exercises">
-      <UniqueIdentifier>{3aa53bc8-9f16-45af-b329-c3fc9063ac42}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Camera">
       <UniqueIdentifier>{c9787ba5-bf46-42d8-b2cb-486c3e0a74e1}</UniqueIdentifier>
     </Filter>
@@ -47,9 +41,6 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Provided</Filter>
-    </ClCompile>
-    <ClCompile Include="Planet.cpp">
-      <Filter>Source Files\Exercises</Filter>
     </ClCompile>
     <ClCompile Include="BaseCamera.cpp">
       <Filter>Source Files\Camera</Filter>
@@ -94,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="tiny_obj_loader.h">
       <Filter>Header Files\Provided</Filter>
-    </ClInclude>
-    <ClInclude Include="Planet.h">
-      <Filter>Header Files\Exercises</Filter>
     </ClInclude>
     <ClInclude Include="BaseCamera.h">
       <Filter>Header Files\Camera</Filter>

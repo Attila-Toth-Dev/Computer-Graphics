@@ -16,12 +16,6 @@ Instance::Instance(glm::mat4 _transform, aie::OBJMesh* _mesh,
 {
 }
 
-Instance::Instance(glm::mat4 _transform, Mesh* _mesh,
-	aie::ShaderProgram* _shader, bool _isUntextured) :
-	m_transform(_transform), m_simpleMesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured)
-{
-}
-
 Instance::Instance(glm::vec3 _position, glm::vec3 _eulerAngles, glm::vec3 _scale, 
 	aie::OBJMesh* _mesh, aie::ShaderProgram* _shader, bool _isUntextured) :
 		m_mesh(_mesh), m_shader(_shader), m_isUntextured(_isUntextured)
@@ -40,18 +34,6 @@ void Instance::Draw(Scene* _scene)
 		OBJDraw(_scene);
 		return;			
 	}
-	if (m_simpleMesh == nullptr && m_isUntextured)
-	{
-		// This is for an untextured OBJMesh
-		// OBJDrawUntextured(_scene);
-		return;
-	}
-	if (m_mesh == nullptr)
-	{
-		// This is for simple Mesh.
-		// MeshDraw(_scene)
-		return;
-	}	
 }
 
 void Instance::OBJDraw(Scene* _scene)
@@ -83,16 +65,6 @@ void Instance::OBJDraw(Scene* _scene)
 		_scene->GetPointLightColours());
 
 	m_mesh->draw();
-}
-
-void Instance::OBJDrawUntextured(Scene* _scene)
-{
-
-}
-
-void Instance::MeshDraw(Scene* _scene)
-{
-
 }
 
 glm::mat4 Instance::MakeTransform(glm::vec3 _position, glm::vec3 _eulerAngles, glm::vec3 _scale)

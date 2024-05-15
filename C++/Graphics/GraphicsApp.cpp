@@ -44,11 +44,8 @@ bool GraphicsApp::startup()
 	m_scene = new Scene(&m_simpleCamera, glm::vec2(getWindowWidth(), getWindowHeight()), light);
 	
 	m_scene->GetPointLights().push_back(Light(glm::vec3(5, 3, 0), glm::vec3(1, 0, 0), 10));
-
+	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
 	#pragma endregion
-
-	/*m_emitter = new ParticleEmitter();
-	m_emitter->Initialise(1000, 500, 0.1f, 0.1f, 1, 5, 1, 0.1f, glm::vec4(1, 0, 0, 1), glm::vec4(1, 1, 0, 1));*/
 
 	return LaunchShaders();
 }
@@ -108,13 +105,11 @@ void GraphicsApp::draw()
 	clearScreen();
 
 	m_scene->Draw();
-
 	// update perspective based on screen size
 	m_projectionMatrix = m_simpleCamera.GetProjectionMatrix(m_scene->GetWindowSize().x, m_scene->GetWindowSize().y);
 	m_viewMatrix = m_simpleCamera.GetViewMatrix();
 
 	auto pv = m_projectionMatrix * m_viewMatrix;
-
 	Gizmos::draw(pv);
 
 	// Unbind the target from the backbuffer
@@ -130,15 +125,6 @@ void GraphicsApp::draw()
 	m_postProcess.bindUniform("iTime", getTime());
 
 	m_renderTarget.getTarget(0).bind(0);
-
-	//// bind particle shader
-	//m_particleShader.bind();
-
-	//// bind particle transform
-	//auto pvm = m_projectionMatrix * m_viewMatrix * m_particleTransform;
-	//m_particleShader.bindUniform("ProjectionViewModel", pvm);
-
-	//m_emitter->Draw();
 
 	m_screenQuad.Draw();
 }
@@ -191,9 +177,6 @@ bool GraphicsApp::LaunchShaders()
 	// Dragon Loader
 	ObjLoader(m_dragonMesh, m_dragonTransform, "./stanford/dragon.obj", "Stanford", false, 0.2f, {1.f, 0, 1.f});
 	
-	// Robo Loader
-	ObjLoader(m_roboMesh, m_roboTransform, "./robo/robo.obj", "robo", false, .5f);
-
 	return true;
 }
 
