@@ -111,19 +111,19 @@ void GraphicsApp::draw()
 
 bool GraphicsApp::LaunchShaders()
 {
-	if (!LoadShaders(m_simpleShader, "./shaders/color.", "Color Shader"))
+	if (!LoadShaders(m_simpleShader, "../bin/shaders/color.", "Color Shader"))
 		return false;
 
-	if (!LoadShaders(m_boundTexture, "./shaders/textured.", "Textured Shader"))
+	if (!LoadShaders(m_boundTexture, "../bin/shaders/textured.", "Textured Shader"))
 		return false;
 
-	if (!LoadShaders(m_classicPhong, "./shaders/classicPhong.", "Simple Phong Shader"))
+	if (!LoadShaders(m_classicPhong, "../bin/shaders/classicPhong.", "Simple Phong Shader"))
 		return false;
 
-	if (!LoadShaders(m_normalMap, "./shaders/normalMap.", "Simple Phong Shader"))
+	if (!LoadShaders(m_normalMap, "../bin/shaders/normalMap.", "Simple Phong Shader"))
 		return false;
 
-	if (!LoadShaders(m_postProcess, "./shaders/post.", "Post Process"))
+	if (!LoadShaders(m_postProcess, "../bin/shaders/post.", "Post Process"))
 		return false;
 
 	if (m_renderTarget.initialise(1, getWindowWidth(), getWindowHeight()) == false)
@@ -144,15 +144,15 @@ bool GraphicsApp::LaunchShaders()
 		 0,  0,  0,  1
 	};
 
-	m_gridTexture.load("./textures/numbered_grid.tga");
+	m_gridTexture.load("../bin/textures/numbered_grid.tga");
 
 	#pragma endregion
 
 	// Spear Loader
-	ObjLoader(m_spearMesh, m_spearTransform, "./soulspear/soulspear.obj", "Soulspear", true, 2);
+	ObjLoader(m_spearMesh, m_spearTransform, "../bin/soulspear/soulspear.obj", "Soulspear", true, 2);
 	
 	// Dragon Loader
-	ObjLoader(m_dragonMesh, m_dragonTransform, "./stanford/dragon.obj", "Stanford", false, 0.2f, {1.f, 0, 1.f});
+	ObjLoader(m_dragonMesh, m_dragonTransform, "../bin/stanford/dragon.obj", "Stanford", false, 0.2f, {1.f, 0, 1.f});
 	
 	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
 	m_scene->AddInstance(new Instance(m_spearTransform, &m_spearMesh, &m_normalMap));
