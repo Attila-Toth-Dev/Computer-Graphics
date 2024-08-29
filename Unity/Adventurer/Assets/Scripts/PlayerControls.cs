@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -86,8 +87,14 @@ public class PlayerControls : MonoBehaviour
             animator.SetTrigger("Jump");
         
         // Movement
-        if(isMoving)
-            animator.SetFloat(vertical, isSprinting ? 2 : 1);
+        if (isMoving)
+        {
+            float lerpValue = Mathf.Lerp(moveSpeed, isSprinting ? 2 : 1, 0.5f);
+
+            float sprintSpeed = 2;
+            float walkSpeed = 1;
+            animator.SetFloat(vertical, lerpValue);
+        }
         else
             animator.SetFloat(vertical, 0);
         

@@ -1,20 +1,32 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MaterialChanger : MonoBehaviour
 {
     [SerializeField] private Material playerMaterial;
-    [SerializeField] private Material[] materials;
+
+    [SerializeField] private Slider sliderR;
+    [SerializeField] private Slider sliderG;
+    [SerializeField] private Slider sliderB;
+    [SerializeField] private Slider sliderA;
 
     private int counter;
+
+    private Color customColor;
 
     private void Start()
     {
         counter = 0;
-
-        playerMaterial.color = materials[0].color;
     }
 
-    public void ChangeMaterial(int _value)
+    private void Update()
+    {
+        ChangeColour();
+    }
+
+    /*public void ChangeMaterial(int _value)
     {
         counter += _value;
 
@@ -27,5 +39,17 @@ public class MaterialChanger : MonoBehaviour
             counter = 0;
 
         playerMaterial.color = materials[counter].color;
+    }*/
+
+    public void ChangeSmoothness(float _intensity)
+    {
+        playerMaterial.SetFloat("_Smoothness", _intensity);
+    }
+
+    public void ChangeColour()
+    {
+        customColor = new Color(sliderR.value, sliderG.value, sliderB.value, sliderA.value);
+        playerMaterial.color = customColor;
+        //playerMaterial.SetColor("_Color", customColor);
     }
 }
