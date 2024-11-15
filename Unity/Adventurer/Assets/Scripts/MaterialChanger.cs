@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -6,50 +7,57 @@ using UnityEngine.UI;
 public class MaterialChanger : MonoBehaviour
 {
     [SerializeField] private Material playerMaterial;
+    [SerializeField] private GameObject playerModelSurface;
+
+    [SerializeField] private Material rimMaterial;
+    [SerializeField] private GameObject[] barrelModels;
+
+    [SerializeField] private Slider smoothnessSlider;
+    [SerializeField] private Slider intensitySlider;
+    [SerializeField] private Slider metallicSlider;
 
     [SerializeField] private Slider sliderR;
     [SerializeField] private Slider sliderG;
     [SerializeField] private Slider sliderB;
-    [SerializeField] private Slider sliderA;
-
-    private int counter;
-
-    private Color customColor;
 
     private void Start()
     {
-        counter = 0;
+        playerMaterial = playerModelSurface.GetComponent<Renderer>().material;
     }
 
     private void Update()
     {
         ChangeColour();
+        ChangeSmoothness();
+        ChangeIntensity();
+        ChangeMetallic();
     }
 
-    /*public void ChangeMaterial(int _value)
+    public void ChangeIntensity()
     {
-        counter += _value;
+        for(int i = 0; i < barrelModels.Length; i++)
+        {
+            rimMaterial.SetFloat("_RimPower", intensitySlider.value);
+        }
+    }
 
-        Debug.Log(counter);
-
-        if (counter <= 0)
-            counter = materials.Length - 1;
-
-        if (counter >= materials.Length)
-            counter = 0;
-
-        playerMaterial.color = materials[counter].color;
-    }*/
-
-    public void ChangeSmoothness(float _intensity)
+    public void ChangeSmoothness()
     {
-        playerMaterial.SetFloat("_Smoothness", _intensity);
+        playerMaterial.SetFloat("_Smoothness", smoothnessSlider.value);
+    }
+
+    public void ChangeMetallic()
+    {
+        playerMaterial.SetFloat("_Metallic", metallicSlider.value);
     }
 
     public void ChangeColour()
     {
-        customColor = new Color(sliderR.value, sliderG.value, sliderB.value, sliderA.value);
-        playerMaterial.color = customColor;
-        //playerMaterial.SetColor("_Color", customColor);
+        playerMaterial.SetColor("_Colour", new Vector4(sliderR.value, sliderG.value, sliderB.value, 1));
+
+        for (int i = 0; i < barrelModels.Length; i++)
+        {
+            rimMaterial.SetColor("_RimColour", new Vector4(sliderR.value, sliderG.value, sliderB.value, 1));
+        }
     }
 }

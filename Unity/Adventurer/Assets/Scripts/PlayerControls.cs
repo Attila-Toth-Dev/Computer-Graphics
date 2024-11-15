@@ -7,7 +7,6 @@ public class PlayerControls : MonoBehaviour
 {
     [Header("Character Settings")]
     [SerializeField] private float walkSpeed = 4f;
-    [SerializeField] private float sprintSpeed = 10f;
     [SerializeField] private float crouchSpeed = 1f;
     [SerializeField] private float jumpForce = 300f;
 
@@ -19,13 +18,11 @@ public class PlayerControls : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] private Vector2 movement;
     [SerializeField] private bool isMoving;
-    [SerializeField] private bool isSprinting;
     [SerializeField] private bool isCrouching;
     [SerializeField] private bool isAttacking;
 
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movementActionRef;
-    [SerializeField] private InputActionReference sprintActionRef;
     [SerializeField] private InputActionReference meleeActionRef;
     [SerializeField] private InputActionReference crouchActionRef;
     [SerializeField] private InputActionReference jumpActionRef;
@@ -44,7 +41,6 @@ public class PlayerControls : MonoBehaviour
     {
         crouchActionRef.action.performed += Crouch;
         jumpActionRef.action.performed += Jump;
-        sprintActionRef.action.performed += Sprint;
         
         meleeActionRef.action.performed += Melee;
     }
@@ -85,19 +81,22 @@ public class PlayerControls : MonoBehaviour
         // Movement Animations
         if(jumpActionRef.action.IsPressed())
             animator.SetTrigger("Jump");
-        
+
+        float lerpValue = 0;
+        float vert = animator.GetFloat(vertical);
+
         // Movement
         if (isMoving)
         {
-            float lerpValue = Mathf.Lerp(moveSpeed, isSprinting ? 2 : 1, 0.5f);
-
-            float sprintSpeed = 2;
-            float walkSpeed = 1;
-            animator.SetFloat(vertical, lerpValue);
+            lerpValue  = Mathf.Lerp(vert, 1, 0.1f);
         }
         else
-            animator.SetFloat(vertical, 0);
-        
+        {
+            lerpValue = Mathf.Lerp(vert, 0, 0.1f);
+        }
+
+        animator.SetFloat(vertical, lerpValue);
+
         // Crouch
         animator.SetBool("Crouch", isCrouching);
 
@@ -107,7 +106,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Movement()
     {
-        if (!isCrouching && !isSprinting)
+        if (!isCrouching)
             moveSpeed = walkSpeed;
 
         rigidbody.MovePosition(transform.position + inputVector * (moveSpeed * Time.fixedDeltaTime));
@@ -126,11 +125,9 @@ public class PlayerControls : MonoBehaviour
         movement = movementActionRef.action.ReadValue<Vector2>();
         inputVector = new Vector3(movement.x, 0, movement.y);
 
-        isSprinting = sprintActionRef.action.IsPressed();
         isMoving = movementActionRef.action.IsPressed();
     }
 
-    private void Sprint(InputAction.CallbackContext context) => moveSpeed = sprintSpeed;
 
     private void Crouch(InputAction.CallbackContext context)
     {
@@ -161,7 +158,6 @@ public class PlayerControls : MonoBehaviour
     private void OnEnable()
     {
         movementActionRef.action.Enable();
-        sprintActionRef.action.Enable();
         jumpActionRef.action.Enable();
         crouchActionRef.action.Enable();
 
@@ -171,7 +167,6 @@ public class PlayerControls : MonoBehaviour
     private void OnDisable()
     {
         movementActionRef.action.Disable();
-        sprintActionRef.action.Disable();
         jumpActionRef.action.Disable();
         crouchActionRef.action.Disable();
 
