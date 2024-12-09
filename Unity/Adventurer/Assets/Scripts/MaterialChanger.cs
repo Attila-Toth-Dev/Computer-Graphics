@@ -11,6 +11,7 @@ public class MaterialChanger : MonoBehaviour
 
     [SerializeField] private Material rimMaterial;
     [SerializeField] private GameObject[] barrelModels;
+    [SerializeField] private ParticleSystem[] particlesSystems;
 
     [SerializeField] private Slider smoothnessSlider;
     [SerializeField] private Slider intensitySlider;
@@ -20,7 +21,9 @@ public class MaterialChanger : MonoBehaviour
     [SerializeField] private Slider sliderG;
     [SerializeField] private Slider sliderB;
 
-    private void Start()
+    private bool _isShown = true;
+
+    private void Awake()
     {
         playerMaterial = playerModelSurface.GetComponent<Renderer>().material;
     }
@@ -58,6 +61,16 @@ public class MaterialChanger : MonoBehaviour
         for (int i = 0; i < barrelModels.Length; i++)
         {
             rimMaterial.SetColor("_RimColour", new Vector4(sliderR.value, sliderG.value, sliderB.value, 1));
+        }
+    }
+
+    public void ToggleParticles()
+    {
+        _isShown = !_isShown;
+
+        for (int i = 0; i < particlesSystems.Length; i++)
+        {
+            particlesSystems[i].gameObject.SetActive(_isShown);
         }
     }
 }

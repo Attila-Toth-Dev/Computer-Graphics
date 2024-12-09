@@ -51,23 +51,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64d940677ed1254c8b7f35579e62ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  sprintSpeed: 4
+  walkSpeed: 4
   crouchSpeed: 1
-  jumpForce: 3000
+  jumpForce: 4000
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   rayLength: 1.2
   isGrounded: 0
   movement: {x: 0, y: 0}
+  lerpValue: 0
   isMoving: 0
-  isSprinting: 0
   isCrouching: 0
   isAttacking: 0
   movementActionRef: {fileID: -6319973561059891356, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
-    type: 3}
-  sprintActionRef: {fileID: -4001639598082024450, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}
   meleeActionRef: {fileID: 3414830535740242337, guid: dcd72e987e9e06d4ca79211a8d7b7a3b,
     type: 3}

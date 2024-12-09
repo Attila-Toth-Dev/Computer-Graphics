@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [Header("Character Settings")]
-    [SerializeField] private float walkSpeed = 4f;
+    [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float crouchSpeed = 1f;
     [SerializeField] private float jumpForce = 300f;
 
@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour
     
     [Header("Debugging")]
     [SerializeField] private Vector2 movement;
+    [SerializeField] private float lerpValue;
     [SerializeField] private bool isMoving;
     [SerializeField] private bool isCrouching;
     [SerializeField] private bool isAttacking;
@@ -50,7 +51,7 @@ public class PlayerControls : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
 
-        moveSpeed = walkSpeed;
+        moveSpeed = lerpValue;
     }
 
     private void Update()
@@ -82,18 +83,10 @@ public class PlayerControls : MonoBehaviour
         if(jumpActionRef.action.IsPressed())
             animator.SetTrigger("Jump");
 
-        float lerpValue = 0;
         float vert = animator.GetFloat(vertical);
 
         // Movement
-        if (isMoving)
-        {
-            lerpValue  = Mathf.Lerp(vert, 1, 0.1f);
-        }
-        else
-        {
-            lerpValue = Mathf.Lerp(vert, 0, 0.1f);
-        }
+        lerpValue = Mathf.Lerp(vert, isMoving ? 4 : -1, 0.005f);
 
         animator.SetFloat(vertical, lerpValue);
 
@@ -107,7 +100,7 @@ public class PlayerControls : MonoBehaviour
     private void Movement()
     {
         if (!isCrouching)
-            moveSpeed = walkSpeed;
+            moveSpeed = lerpValue;
 
         rigidbody.MovePosition(transform.position + inputVector * (moveSpeed * Time.fixedDeltaTime));
         
