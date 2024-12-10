@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [Header("Character Settings")]
-    [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float crouchSpeed = 1f;
     [SerializeField] private float jumpForce = 300f;
 
@@ -18,6 +17,7 @@ public class PlayerControls : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] private Vector2 movement;
     [SerializeField] private float lerpValue;
+    [SerializeField] private bool isJumping;
     [SerializeField] private bool isMoving;
     [SerializeField] private bool isCrouching;
     [SerializeField] private bool isAttacking;
@@ -36,7 +36,7 @@ public class PlayerControls : MonoBehaviour
     private new Rigidbody rigidbody;
     private Animator animator;
     
-    private static readonly int vertical = Animator.StringToHash("Vertical");
+    private static readonly int Vertical = Animator.StringToHash("Vertical");
 
     private void Awake()
     {
@@ -81,19 +81,19 @@ public class PlayerControls : MonoBehaviour
 
         // Movement Animations
         if(jumpActionRef.action.IsPressed())
-            animator.SetTrigger("Jump");
+            animator.SetBool("Jump", isJumping);
 
-        float vert = animator.GetFloat(vertical);
+        float vert = animator.GetFloat(Vertical);
 
         // Movement
-        lerpValue = Mathf.Lerp(vert, isMoving ? 4 : -1, 0.005f);
+        lerpValue = Mathf.Lerp(vert, isMoving ? 6 : -1, isMoving ? 0.005f : .02f);
 
-        animator.SetFloat(vertical, lerpValue);
+        animator.SetFloat(Vertical, lerpValue);
 
         // Crouch
         animator.SetBool("Crouch", isCrouching);
 
-        // Groudn Check
+        // Ground Check
         animator.SetBool("Grounded", isGrounded);
     }
 
@@ -119,6 +119,7 @@ public class PlayerControls : MonoBehaviour
         inputVector = new Vector3(movement.x, 0, movement.y);
 
         isMoving = movementActionRef.action.IsPressed();
+        isJumping = jumpActionRef.action.IsPressed();
     }
 
 
@@ -164,11 +165,5 @@ public class PlayerControls : MonoBehaviour
         crouchActionRef.action.Disable();
 
         meleeActionRef.action.Disable();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + transform.up, Vector3.down);
     }
 }
