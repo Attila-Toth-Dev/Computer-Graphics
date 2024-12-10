@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 4727466892230385036, guid: 950aa06822b9e4b4294bdd3ef5ed87fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4727466892230385036, guid: 950aa06822b9e4b4294bdd3ef5ed87fe,
         type: 3}
@@ -525,6 +525,12 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 102303290428575449, guid: 950aa06822b9e4b4294bdd3ef5ed87fe,
     type: 3}
   m_PrefabInstance: {fileID: 1847733937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &166196677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6699659725179207417, guid: 1f7d1d78bc7e9c8478d894626995305c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2136581783}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &167742752
 GameObject:
@@ -1211,7 +1217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMaterial: {fileID: 2100000, guid: 6156492c4d05bcc44bbc9fd50d35ccd8, type: 2}
-  playerModelSurface: {fileID: 0}
+  playerModelSurface: {fileID: 166196677}
   rimMaterial: {fileID: 2100000, guid: 591aa460cf5df494d8f234a2ab8a46a2, type: 2}
   barrelModels:
   - {fileID: 1283476361}
@@ -4257,7 +4263,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: 1f32384acbeee9d44b339f4d254b4c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4482,7 +4488,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837455150
 GameObject:

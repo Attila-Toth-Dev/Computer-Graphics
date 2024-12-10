@@ -77,7 +77,7 @@ public class PlayerControls : MonoBehaviour
     {
         // Melee Animations
         if (meleeActionRef.action.IsPressed())
-            animator.SetTrigger("Stab");
+            animator.SetBool("Punch", isAttacking);
 
         // Movement Animations
         if(jumpActionRef.action.IsPressed())
@@ -120,6 +120,7 @@ public class PlayerControls : MonoBehaviour
 
         isMoving = movementActionRef.action.IsPressed();
         isJumping = jumpActionRef.action.IsPressed();
+        isAttacking = meleeActionRef.action.IsPressed();
     }
 
 

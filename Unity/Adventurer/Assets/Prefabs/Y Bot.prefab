@@ -60,6 +60,7 @@ MonoBehaviour:
   isGrounded: 0
   movement: {x: 0, y: 0}
   lerpValue: 0
+  isJumping: 0
   isMoving: 0
   isCrouching: 0
   isAttacking: 0
@@ -1098,7 +1099,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 271e8f22740f2264197db5db70c70bde, type: 2}
+  - {fileID: 2100000, guid: 591aa460cf5df494d8f234a2ab8a46a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1819,7 +1820,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1f32384acbeee9d44b339f4d254b4c74, type: 2}
+  - {fileID: 2100000, guid: 6156492c4d05bcc44bbc9fd50d35ccd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
