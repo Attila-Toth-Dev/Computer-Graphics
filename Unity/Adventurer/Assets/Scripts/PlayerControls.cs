@@ -76,17 +76,15 @@ public class PlayerControls : MonoBehaviour
     private void Animations()
     {
         // Melee Animations
-        if (meleeActionRef.action.IsPressed())
-            animator.SetBool("Punch", isAttacking);
-
+        animator.SetBool("Punch", isAttacking);
+        
         // Movement Animations
-        if(jumpActionRef.action.IsPressed())
-            animator.SetBool("Jump", isJumping);
+        animator.SetBool("Jump", isJumping);
 
         float vert = animator.GetFloat(Vertical);
 
         // Movement
-        lerpValue = Mathf.Lerp(vert, isMoving ? 6 : -1, isMoving ? 0.005f : .02f);
+        lerpValue = Mathf.Lerp(vert, isMoving ? 6 : -1, isMoving ? 0.01f : .03f);
 
         animator.SetFloat(Vertical, lerpValue);
 
@@ -120,7 +118,8 @@ public class PlayerControls : MonoBehaviour
 
         isMoving = movementActionRef.action.IsPressed();
         isJumping = jumpActionRef.action.IsPressed();
-        isAttacking = meleeActionRef.action.IsPressed();
+        
+        isAttacking = meleeActionRef.action.IsInProgress();
     }
 
 
@@ -147,7 +146,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Melee(InputAction.CallbackContext obj)
     {
-
+        
     }
 
     private void OnEnable()
